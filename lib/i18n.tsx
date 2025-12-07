@@ -11,6 +11,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   copy: Copy;
+  isRTL: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -40,13 +41,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (mounted) {
       document.documentElement.lang = language;
+      document.documentElement.dir = language === "he" ? "rtl" : "ltr";
     }
   }, [language, mounted]);
 
   const copy = language === "he" ? copyHe : copyEn;
+  const isRTL = language === "he";
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, copy }}>
+    <LanguageContext.Provider value={{ language, setLanguage, copy, isRTL }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -1,6 +1,3 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="4" fill="currentColor" opacity="0.1"/>
-  <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2" fill="none"/>
-  <circle cx="16" cy="16" r="6" fill="currentColor"/>
+<path d="M17.6299 2C18.9388 2.00013 19.9999 3.06119 20 4.37012V9.07227C22.3907 10.4556 24 13.0392 24 16C24 18.9606 22.3905 21.5433 20 22.9268V27.6299C19.9999 28.9388 18.9388 29.9999 17.6299 30H14.3701C13.0612 29.9999 12.0001 28.9388 12 27.6299V22.9268C9.60951 21.5433 8 18.9606 8 16C8 13.0392 9.60927 10.4556 12 9.07227V4.37012C12.0001 3.06119 13.0612 2.00013 14.3701 2H17.6299Z" fill="black"/>
 </svg>
-

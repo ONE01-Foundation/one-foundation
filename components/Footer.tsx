@@ -1,10 +1,11 @@
 "use client";
 
-import { useCopy } from "@/lib/i18n";
+import { useCopy, useLanguage } from "@/lib/i18n";
 import Image from "next/image";
 
 export function Footer() {
   const copy = useCopy();
+  const { isRTL } = useLanguage();
 
   return (
     <footer className="bg-neutral-950 dark:bg-black text-neutral-50 py-12 px-4 sm:px-6 lg:px-8">

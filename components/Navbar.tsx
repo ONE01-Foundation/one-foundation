@@ -6,7 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
 
 export function Navbar() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, isRTL } = useLanguage();
   const copy = useCopy();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -26,8 +26,8 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Left: Logo + Brand */}
+        <div className={`flex items-center justify-between h-16 ${isRTL ? "flex-row-reverse" : ""}`}>
+          {/* Logo + Brand */}
           <div className="flex items-center gap-3">
             <div className="relative w-8 h-8">
               <Image
@@ -42,7 +42,7 @@ export function Navbar() {
             </span>
           </div>
 
-          {/* Right: Language + Theme */}
+          {/* Language + Theme */}
           <div className="relative" ref={dropdownRef}>
             <button
               onMouseEnter={() => setShowDropdown(true)}
@@ -54,7 +54,7 @@ export function Navbar() {
 
             {showDropdown && (
               <div
-                className="absolute right-0 mt-2 w-48 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg p-2"
+                className={`absolute ${isRTL ? "left-0" : "right-0"} mt-2 w-48 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg p-2`}
                 onMouseLeave={() => setShowDropdown(false)}
               >
                 <div className="flex flex-col gap-2">

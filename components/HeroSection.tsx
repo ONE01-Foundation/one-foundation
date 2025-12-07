@@ -11,6 +11,13 @@ export function HeroSection() {
     console.log("Navigate to app");
   };
 
+  const handleMoreInfoClick = () => {
+    const anonymouslySection = document.getElementById("anonymously");
+    if (anonymouslySection) {
+      anonymouslySection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950">
       <OrbitWorlds />
@@ -49,7 +56,8 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-8 flex items-center gap-2 mx-auto text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+          onClick={handleMoreInfoClick}
+          className="mt-8 flex items-center gap-2 mx-auto text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors cursor-pointer"
         >
           <span>{copy.hero.moreInfoLabel}</span>
           <motion.span
