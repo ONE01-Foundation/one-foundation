@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { LanguageProvider } from "@/lib/i18n";
-import { ThemeProvider } from "next-themes";
+import { LayoutClient } from "./layout-client";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ONE01 Foundation",
-  description: "The World, In Real Time.",
+  description: "The standards and governance layer for the ONE01 ecosystem.",
+  openGraph: {
+    title: "ONE01 Foundation",
+    description: "The standards and governance layer for the ONE01 ecosystem.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -17,13 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <LanguageProvider>{children}</LanguageProvider>
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );
 }
-

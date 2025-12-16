@@ -1,44 +1,23 @@
-"use client";
-
-import { useCopy, useLanguage } from "@/lib/i18n";
-import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
-  const copy = useCopy();
-  const { isRTL } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-950 dark:bg-black text-neutral-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center gap-6">
-          {/* Logo */}
-          <div className="relative w-12 h-12">
-            <Image
-              src="/one01-logo.svg"
-              alt="ONE01 Logo"
-              fill
-              className="object-contain invert"
-            />
-          </div>
-
-          {/* Links */}
+    <footer className="border-t border-neutral-200 py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-neutral-500">
+          <div>© {currentYear} ONE01 Foundation</div>
           <nav className="flex flex-wrap gap-6 justify-center">
-            {copy.footer.links.map((link) => (
-              <a
-                key={link.id}
-                href="#"
-                className="text-neutral-400 hover:text-neutral-50 transition-colors text-sm"
-              >
-                {link.label}
-              </a>
-            ))}
+            <Link href="/docs" className="hover:text-neutral-700 transition-colors">
+              Docs
+            </Link>
+            <Link href="/contact" className="hover:text-neutral-700 transition-colors">
+              Contact
+            </Link>
           </nav>
-
-          {/* Copyright */}
-          <p className="text-neutral-500 text-sm">{copy.footer.copyright}</p>
         </div>
       </div>
     </footer>
   );
 }
-
